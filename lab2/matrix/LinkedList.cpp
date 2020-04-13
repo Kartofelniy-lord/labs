@@ -41,13 +41,13 @@ public:
 	void deleteDublicate()
 	{
 		Node* bufi = 0;
-		bool firstChange = false;
+		bool firstChang = false;
 		for (Node* i = first; i; i = i->next)
 		{
-			if (firstChange)
+			if (firstChang)
 			{
 				i = first;
-				firstChange = false;
+				firstChang = false;
 			}
 			bool isDubl = false;
 			Node* bufj = first;
@@ -71,7 +71,7 @@ public:
 					i = bufi;
 					first = i;
 					if (!i) return;
-					firstChange = true;
+					firstChang = true;
 				}
 				else
 				{

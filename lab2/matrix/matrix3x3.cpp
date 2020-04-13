@@ -6,11 +6,13 @@
 using namespace std;
 class Matrix3x3
 {
+	int value = 3;
+
 	int array[3][3] = { 0 };
     public :
 	Matrix3x3() {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++)
+		for (int i = 0; i < value; i++) {
+			for (int j = 0; j < value; j++)
 			{
 				array[i][j] = 0;
 			}
@@ -26,8 +28,8 @@ class Matrix3x3
 	}
 
 	void fillRandomElements(const int minVal, const int maxVal) {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++)
+		for (int i = 0; i < value; i++) {
+			for (int j = 0; j < value; j++)
 			{
 				array[i][j] = rand() % (maxVal - minVal + 1) + minVal;
 			}
@@ -36,7 +38,7 @@ class Matrix3x3
 
 	int sumPrincipalDiag() const {
 		int count = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < value; i++) {
 			count += array[i][i];
 		}
 		return count;
@@ -44,15 +46,15 @@ class Matrix3x3
 
 	int sumSecondaryDiag() {
 		int count = 0;
-		for (int i = 0; i < 3; i++) {
-			count += array[i][2 - i];
+		for (int i = 0; i < value; i++) {
+			count += array[i][value - 1 - i];
 		}
 		return count;
 	}
 
 	int productPrincipalDiag() {
 		int count = 1;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < value; i++) {
 			count *= array[i][i];
 		}
 		return count;
@@ -60,15 +62,15 @@ class Matrix3x3
 
 	int productSecondaryDiag() {
 		int count = 1;
-		for (int i = 0; i < 3; i++) {
-			count *= array[i][2 - i];
+		for (int i = 0; i < value; i++) {
+			count *= array[i][value - 1 - i];
 		}
 		return count;
 	}
 
 	int sumRow(const int iRow) {
 		int count = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < value; i++) {
 			count += array[iRow][i];
 		}
 		return count;
@@ -76,7 +78,7 @@ class Matrix3x3
 
 	int minColumn(const int iCol) {
 		int min = INT32_MAX;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < value; i++) {
 			min = array[i][i] < min ? array[iCol][i] : min;
 			min = array[i][iCol] < min ? array[i][iCol] : min;
 		}
@@ -85,7 +87,7 @@ class Matrix3x3
 
 	int maxColumn(const int iCol) {
 		int max = INT32_MIN;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < value; i++) {
 			max = array[i][iCol] > max ? array[i][iCol] : max;
 		}
 		return max;
